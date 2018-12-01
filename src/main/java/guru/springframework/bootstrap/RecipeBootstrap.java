@@ -7,16 +7,21 @@ import guru.springframework.domain.*;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.sun.activation.registries.LogSupport.log;
 
+
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -30,8 +35,18 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         this.unitOfMeasureRepository = unitOfMeasureRepository;
     }
 
+    @Override
+    @Transactional
+    public void onApplicationEvent(ContextRefreshedEvent event) {
+        log("onApplicationEventL: load data");
+        recipeRepository.saveAll(getRecipes());
+    }
+
+
     private List<Recipe> getRecipes() {
 
+
+        log.debug("Started inserting data");
 
         List<Recipe> recipes = new ArrayList<>(2);
 
@@ -122,8 +137,5 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         return categoryOptional.get();
     }
 
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent event) {
-        recipeRepository.saveAll(getRecipes());
-    }
+
 }

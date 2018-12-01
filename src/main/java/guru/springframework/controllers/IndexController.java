@@ -21,8 +21,6 @@ import java.util.Set;
 @Controller
 public class IndexController {
 
-
-
     private final RecipeService recipeService;
 
     public IndexController(RecipeService recipeService) {
