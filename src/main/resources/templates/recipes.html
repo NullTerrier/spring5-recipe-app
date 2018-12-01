@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>List of Vets</title>
+</head>
+<body>
+<!--/*thymesVar id="recipe" type="guru.springframework.recipe"*/-->
+<h2 th:text="'Recipes'">List of Recipes</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Cook Time</th>
+        <th>Description</th>
+        <th>Difficulty</th>
+        <th>Preparation time</th>
+        <th>Servings</th>
+        <th>Recipe Notes</th>
+        <th>Ingredients</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="recipe : ${recipes}">
+        <th th:text="${recipe.getId()}">1</th>
+        <th th:text="${recipe.getCookTime()}">John</th>
+        <th th:text="${recipe.getDescription()}">Doe</th>
+        <th th:text="${recipe.getDifficulty()}">EASY</th>
+        <th th:text="${recipe.getPrepTime()}">0</th>
+        <th th:text="${recipe.getServings()}">0</th>
+        <th th:text="${recipe.getNotes().getRecipeNotes()}">Note</th>
+        <th th:each="ingredient : ${recipe.getIngredients()}">
+        <ul>
+            <li th:text="${ingredient.getAmount() + ' ' +  ingredient.getUom() + ' ' + ingredient.getDescription()}"></li>
+        </ul>
+
+        </th>
+
+    </tr>
+    </tbody>
+
+</table>
+</body>
+
+
+</html>
