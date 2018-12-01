@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.sun.activation.registries.LogSupport.log;
+
 
 
 @Slf4j
@@ -38,7 +38,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        log("onApplicationEventL: load data");
+
         recipeRepository.saveAll(getRecipes());
     }
 
