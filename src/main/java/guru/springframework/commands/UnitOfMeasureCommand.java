@@ -13,6 +13,5 @@ import lombok.Setter;
 public class UnitOfMeasureCommand {
 
     private Long id;
-    private IngredientCommand ingredient;
     private String description;
 }
