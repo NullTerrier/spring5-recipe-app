@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
  */
 
 @RunWith(MockitoJUnitRunner.class)
-public class IngredientToIngredientCommandConverterTest {
+public class IngredientToIngredientCommandTest {
 
     private final Long INGREDIENT_ID = 1L;
     private final String INGREDIENT_DESCRIPTION = "desc";
@@ -39,10 +39,10 @@ public class IngredientToIngredientCommandConverterTest {
     UnitOfMeasureToUnitOfMeasureCommand uomConverter;
 
     @InjectMocks
-    IngredientToIngredientCommandConverter converter;
+    IngredientToIngredientCommand converter;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(uomConverter);
     }
 

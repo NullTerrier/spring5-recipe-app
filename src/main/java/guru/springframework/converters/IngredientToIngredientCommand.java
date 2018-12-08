@@ -11,11 +11,11 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Component
-public class IngredientToIngredientCommandConverter implements Converter<Ingredient, IngredientCommand> {
+public class IngredientToIngredientCommand implements Converter<Ingredient, IngredientCommand> {
 
     private final UnitOfMeasureToUnitOfMeasureCommand uomConverter;
 
-    public IngredientToIngredientCommandConverter(UnitOfMeasureToUnitOfMeasureCommand uomConverter) {
+    public IngredientToIngredientCommand(UnitOfMeasureToUnitOfMeasureCommand uomConverter) {
         this.uomConverter = uomConverter;
     }
 
