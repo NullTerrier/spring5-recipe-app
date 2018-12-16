@@ -3,13 +3,10 @@ package guru.springframework.repositories;
  * @author Marecki
  */
 
-import guru.springframework.domain.Recipe;
+import guru.springframework.domain.Ingredient;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Set;
-
 @Repository
-public interface RecipeRepository extends CrudRepository<Recipe, Long> {
-
+public interface IngredientRepository extends CrudRepository<Ingredient, Long> {
 }

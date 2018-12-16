@@ -54,7 +54,7 @@ public class IngredientCommandToIngredientTest {
         IngredientCommand command = new IngredientCommand();
         command.setId(COMM_ID);
         command.setDescription(DESC);
-        command.setUnitOfMeasure(unitOfMeasureCommand);
+        command.setUom(unitOfMeasureCommand);
         command.setAmount(AMOUNT);
         command.setRecipeId(RECIPE_ID);
 

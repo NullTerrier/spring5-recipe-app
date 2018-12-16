@@ -6,7 +6,9 @@ package guru.springframework.converters;
 import guru.springframework.commands.IngredientCommand;
 import guru.springframework.domain.Ingredient;
 import guru.springframework.domain.Recipe;
+import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,17 +21,20 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
     }
 
     @Override
-    public Ingredient convert(IngredientCommand source) {
+    @Nullable
+    @Synchronized
+    public Ingredient convert(@Nullable IngredientCommand source) {
 
         if (source == null) {
             return null;
         }
 
         Ingredient ingredient = new Ingredient();
+
         ingredient.setId(source.getId());
         ingredient.setDescription(source.getDescription());
         ingredient.setAmount(source.getAmount());
-        ingredient.setUom(uomConverter.convert(source.getUnitOfMeasure()));
+        ingredient.setUom(uomConverter.convert(source.getUom()));
 
         if (source.getRecipeId() != null) {
             Recipe recipe = new Recipe();

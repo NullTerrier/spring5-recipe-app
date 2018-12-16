@@ -22,20 +22,20 @@ public class IngredientToIngredientCommand implements Converter<Ingredient, Ingr
     @Synchronized
     @Override
     @Nullable
-    public IngredientCommand convert(Ingredient source) {
+    public IngredientCommand convert(@Nullable Ingredient source) {
 
         if (source == null) {
             return null;
         }
 
-        IngredientCommand command = new IngredientCommand();
+        final IngredientCommand command = new IngredientCommand();
         command.setAmount(source.getAmount());
         command.setId(source.getId());
         command.setDescription(source.getDescription());
         if (source.getRecipe() != null) {
             command.setRecipeId(source.getRecipe().getId());
         }
-        command.setUnitOfMeasure(uomConverter.convert(source.getUom()));
+        command.setUom(uomConverter.convert(source.getUom()));
         return command;
     }
 }
